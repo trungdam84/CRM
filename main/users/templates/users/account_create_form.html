@@ -1,0 +1,125 @@
+{% extends "customers/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST">
+{% csrf_token %}
+
+
+<div class="collapse show" id="collapseExample" style="">
+                                    <div class="card card-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="well-block">
+                                                        <div class="well-title">
+                                                            <h2>Create new Salon account</h2>
+                                                        </div>
+                                                        <form id="appointment-form" method="POST">
+                                                        <input type="hidden" name="csrfmiddlewaretoken" value="l6xag7Ibd87ExdntsiCxTTKEhUHN20QDPPXnbQn2N7xic52ioklIFPJ4AZ2WrjfY">
+                                                            <!-- Form start -->
+                                                            <div class="row">
+                                                                
+                                                                <!-- Text input-->
+                                                                
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="email">Account Email</label>
+                                                                        <input id="email" name="email" type="email" placeholder="email@mysalon.co.uk" class="form-control input-md" required="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="salon_name">Salon name</label>
+                                                                        <input id="salon_name" name="salon_name" type="text" placeholder="Salon name" class="form-control input-md" required="">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Text input-->
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="salon_tel">Salon telephone</label>
+                                                                        <input id="mobile" name="salon_tel" type="tel" placeholder="020 12345678" class="form-control input-md" required="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="salon_website">Salon website</label>
+                                                                        <input id="mobile" name="salon_website" type="tel" placeholder="www.mysalon.co.uk" class="form-control input-md" required="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="firstname">Account Firstname</label>
+                                                                        <input id="firstname" name="firstname" type="text" placeholder="Firstname" class="form-control input-md" required="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="lastname">Account Lastname</label>
+                                                                        <input id="lastname" name="lastname" type="text" placeholder="Lastname" class="form-control input-md" required="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="mobile">Account Mobile</label>
+                                                                        <input id="mobile" name="mobile" type="tel" placeholder="Mobile" class="form-control input-md" required="">
+                                                                    </div>
+                                                                </div>
+                                                                  <div class="col-md-8">
+                                                                    <div class="form-group">
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Text input-->
+
+                                                                <!-- Select Basic -->
+
+                                                                <!-- Select Basic -->
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="open_time">Salon open time</label>
+                                                                        <input id="open_time" name="open_time" type="time" placeholder="09:00:00" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="closed_time">Salon closed time</label>
+                                                                        <input id="closed_time" name="closed_time" type="time" placeholder="09:00:00" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="weekly_close">Weekly close day</label>
+                                                                        <select id="weekly_close" name="weekly_close" class="form-control">
+                                                                                <option value="7">Open 7 days a week</option> 
+                                                                                <option value="0">Close Moday</option>                                                                            
+                                                                                <option value="1">Close Tuesday</option>                                                                            
+                                                                                <option value="2">Close Wednesday</option>                                                                         
+                                                                                <option value="3">Close Thursday</option>
+                                                                                <option value="4">Close Friday</option>
+                                                                                <option value="5">Close Saturday</option>
+                                                                                <option value="6">Close Sunday</option>
+                                                                            
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                            
+
+                                                                <!-- Button -->
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <button id="create_account" name="create_account" class="btn btn-light">Create account</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <!-- form end -->
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'customers/base.html' %}
+{% block content %}
+
+<h1> Deleted customer </h1>
+<h3>{{customer}}</h3>
+<a class="btn btn-primary ml-auto" style="margin-left: 20px;" href="{% url 'customers' %}">Customers</a>
+{% endblock %}

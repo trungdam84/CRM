@@ -1,0 +1,267 @@
+{% extends 'customers/index_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div id="wait_Modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+                <div class="modal-body font-weight-light small">
+                    <h3 class="text-center">Waiting list</h3>
+                    <hr>
+                    <p class="text-center" style="margin-top: 10px;"><small>Please choose the date and time you would like to be booked in. We'll SMS you if we have cancellations.</small></p>
+                    <form class="" id="appointment-form" method="POST" >
+                        {% csrf_token %}
+                        <input type="hidden" name="appoinmentID" id="appoinmentID" value="{{appoinmentID}}">
+                            <!-- Form start -->
+                                                   <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label" for="service">Appointment For</label>
+                                                                            <select name="service" class="form-control">
+                                                                                {% for service in serviceblocks %}
+                                                                                    <option  value={{service.pk}}>{{service.name}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+            
+                                                                    <div class="col-md-12">
+                                                        
+                                                                        <div class="form-group">
+                                                                            <label class="control-label" for="appointmentfor">Extra services</label>
+                                                                            <div class="card card-body">
+                                                                                <div class="row ">
+                                                                                {% for extra in extraservices %}
+                                                                                {% if extra.frontEnd %}
+                                                                                <div class="col-md-4">
+                                                                                <label for="{{extra.name}}"> {{extra.name}}</label>
+                                                                                <input type="checkbox" name="{{extra.name}}" value="">
+                                                                                </div>
+                                                                                {% else %}
+                                                                                {% endif %}
+                                                                                {% endfor %}
+                                                                                </div>
+                                                            
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center" style="margin-top: 30px;">
+                                    <div class="row d-flex justify-content-center form-group">
+                                        <div class="col-md-7 justify-content-center">
+                                            <label class="control-label" for="wait_date">Please choose the date</label>
+                                            <select id="wait_date" name="wait_date" class="form-control">
+                                                {% for date in waitting_list_dates %}
+                                                    <option class="text-center"  value="{{date|date:'Y-m-d'}}">{{date|date:"l"}} {{date|date:'Y-m-d'}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                
+                                    
+                                    </div>
+                                </div>
+           
+
+                                <!-- Select Basic -->
+
+                                <!-- Select Basic -->
+                 
+                                <div class="col-md-12 text-center">
+                                    <div class="form-group">                            
+                                        <p><small> And choose the time.</small></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 text-center">
+                                    <div class="row form-group">
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="waitting_time_from">From</label>
+                                            <select id="waitting_time_from" name="waitting_time_from" class="form-control">
+                                                {% for time in waitting_times %}
+                                                    <option  value="{{time|date:'Y-m-d H:i:s'}}">{{time|date:'H:i'}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label" for="waitting_time_to">To</label>
+                                            <select id="waitting_time_to" name="waitting_time_to" class="form-control">
+                                                {% for time in waitting_times %}
+                                                <option  value="{{time|date:'Y-m-d H:i:s'}}">{{time|date:'H:i'}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+
+
+           
+
+
+                                <!-- Button -->
+                                <div class="col-md-12 text-center">
+                                    <div class="form-group">
+                                        <button style="margin-top: 20px;" id="waiting_submit" name="waiting_submit" class="btn btn-light">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-white font-weight-bold">Creatip</h1>
+                        <hr class="divider my-4" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 font-weight-light mb-5">Your best local Nails Artist in Kettering!</p>
+
+    
+                                    <div class="collapse show" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="well-block">
+                                                        <div class="well-title">
+                                                            <h2>Please chose your appointment time</h2>
+                                                        </div>
+
+                                                        {% if messages %}
+                                                            {% for message in messages %}
+                                                            <div class="alert alert-warning">
+                                                                {{ message }}
+                                                            </div>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                        <form id="appointment-form" method="POST">
+                                                        <input type="hidden" id="appoinmentID" name="appoinmentID" value="{{appoinmentID}}">  
+                                                        {% csrf_token %}
+                                                            <!-- Form start -->
+                                                            <div class="row">
+                                                                <div class="col-md-12" id="appointment">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label" for="service">Appointment For</label>
+                                                                            <select id="service" name="service" class="form-control">
+                                                                                {% for service in serviceblocks %}
+                                                                                    <option  value={{service.pk}}>{{service.name}}</option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+            
+                                                                    <div class="col-md-12">
+                                                        
+                                                                        <div class="form-group">
+                                                                            <label class="control-label" for="appointmentfor">Extra services</label>
+                                                                            <div class="card card-body">
+                                                                                <div class="row ">
+                                                                                {% for extra in extraservices %}
+                                                                                {% if extra.frontEnd %}
+                                                                                <div class="col-md-4">
+                                                                                <label for="{{extra.name}}"> {{extra.name}}</label>
+                                                                                <input type="checkbox" id="{{extra.name}}" name="{{extra.name}}" value="">
+                                                                                </div>
+                                                                                {% else %}
+                                                                                {% endif %}
+                                                                                {% endfor %}
+                                                                                </div>
+                                                            
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="notice">Notice</label>
+                                                                        <input id="notice" name="notice" type="text" placeholder="Notice to {{salonAcc.salonName}}'s team!" class="form-control input-md">
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="col-md-12">                                                                
+                                                                    <div class="row">
+                                                                    
+                                                                            
+                                                                            <div class="col-md-6" style="margin-top:40px">
+                                                                            <label class="control-label" for="date">Available Date</label>
+                                                                                <select class="form-control" name="date" id="date">
+                                                                                {% for appdate in availDates %}
+                                                                                    <option  value="{{appdate|date:'Y-m-d'}}">{{appdate|date:"l"}} {{appdate}}</option>
+                                                                                {% endfor %}
+                                                                                </select>
+                                                                            </div>  
+                                                            
+        
+                                                                            <div class="col-md-6" style="margin-top:40px">
+                                                                                <label class="control-label" for="time">Available Time</label>
+                                                                                    <select class="form-control" name="time" id="time">
+                                                                                    {% for time in availTimes %}
+                                                                                        <option  value="{{time|date:'Y-m-d H:i:s'}}">{{time|date:'H:i'}}</option>
+                                                                                    {% endfor %}
+                                                                                    </select>
+                                                                            </div>  
+                                                                  
+                                                             
+                                                                  
+
+                                                                    <!-- Button -->
+                                                                    <div class="col-md-12" style="margin-top:25px">
+                                                                        <div class="form-group">
+                                                                            <button id="confirm" name="confirm" class="btn btn-light">Confirm</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </form>
+                                                        <!-- form end -->
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="well-block">
+                                                        <div class="well-title">
+                                                            <p><small>If your time you prefer is not available would you like to put your name in<a id="wait_modal" href="#" title="View" data-target="#wait_Modal" data-toggle="modal"> our waiting list</a>?</small></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+{% endblock content %}
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static '/js/appointment_create.js'%}"></script>
+<script src="{% static '/js/waiting_list.js'%}"></script>
+
+
+<script>
+
+
+
+
+</script>
+{% endblock script %}

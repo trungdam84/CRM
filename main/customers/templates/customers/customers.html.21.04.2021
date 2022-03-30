@@ -1,0 +1,70 @@
+{% extends 'customers/base.html' %}
+
+
+
+{% block content %}
+
+
+<div class="dataTables_wrapper">
+    {% comment %} <div>
+        <a class="btn btn-primary ml-auto" href="{% url 'create-customer' %}">Create new customer</a>
+    </div> {% endcomment %}
+    <div class="row">
+    <div class="col-md-3">
+    <input id="id_search" name="search" type="text" placeholder="Search" class="form-control input-md">
+    </div>
+    
+    </div>
+        
+
+    <hr>
+    <table id="myTable" style="margin:0px; height:150px; width:100%; overflow:auto;">      
+                <thead class="thead-dark">
+                  <tr style="">                  
+                    <th width="10%">ID</th>
+                    <th width="30%">FirstName</th>
+                    <th width="30%">LastName</th>
+                    <th width="30%">Mobile</th>
+                    <th width="20%">Box</th>
+                    <th width="100%"></th>
+                  </tr>
+                </thead>
+
+        
+    </table>
+</div>
+
+<script>
+$(document).ready(function(){
+    
+    $("#id_search").on("keyup", function() {
+
+      let value = $(this).val().toLowerCase();
+        $.ajax({
+            url: '/staff/customer_search/',
+            data: {search:value},
+            dataType: 'text',
+            type: 'get',
+            cache: 'false',
+            success: function(cusdata){
+              $("#myTable").replaceWith(cusdata)
+            }
+        });
+              {% comment %} alert('ok') {% endcomment %}
+    });
+
+
+
+
+
+
+});
+</script>
+
+
+{% endblock content %}
+
+{% block js %}
+
+
+{% endblock js %}

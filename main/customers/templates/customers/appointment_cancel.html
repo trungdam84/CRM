@@ -1,0 +1,58 @@
+{% extends 'customers/index_base.html' %}
+{% block content %}
+<div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-white font-weight-bold">Creatip</h1>
+                        <hr class="divider my-4" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 font-weight-light mb-5">Your best local Nails Artist in Kettering!</p>
+
+    
+                                    <div class="collapse show" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="well-block">
+                                                        <div class="well-title">
+                                       
+                                                        </div>
+                                                        <h4>You would like to cancel your appointment:</h4>
+                                                        <h5>Appointment Name: {{appointment.customer}}
+                                                        </h5>
+                                                        <h6>Time: {{appointment.dateTime|date:"l"}} {{appointment.dateTime}}</h5>
+                                                        <p class="font-weight-light" style="margin-top:25px; font-size: 15px">                                                      
+
+
+                                                        Please click on Confirm to cancel your appointment!
+
+                                                        </p>
+                                                        <form method='POST'>
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="appointment" id="appointment" value="{{appointment.cancelID}}">
+                                                        <button style="margin-top: 20px;" id="submit" name="submit" class="btn btn-danger">Confirm</button>
+                                                        </form>
+                                                        <p class="font-weight-light" style="margin-top:25px; font-size: 15px">
+                                                        
+
+
+                                                        Thank you!
+
+                                                        </p>
+                                                       
+                                                        <!-- form end -->
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                    </div>
+                </div>
+            </div>
+{% endblock content %}

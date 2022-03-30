@@ -1,0 +1,383 @@
+{% extends "customers/base.html" %} {% load static %} {% block content%}
+<div class="row justify-content-center mt-5 p-2">
+  <div class="col-sm-12 col-md-9 col-lg-6 container">
+    <form method="POST">
+      {%csrf_token %}
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Add Product</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <div>
+              <label class="required" for="id_productName">ProductName:</label>
+
+              <input
+                type="text"
+                name="productName"
+                class="form-control"
+                maxlength="250"
+                required=""
+                id="id_productName"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div>
+              <label class="required" for="id_productCode">ProductCode:</label>
+
+              <input
+                type="text"
+                name="productCode"
+                class="form-control"
+                maxlength="50"
+                required=""
+                id="id_productCode"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="card">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <label for="id_supplier">Supplier Name</label>
+
+                    <input
+                      type="text"
+                      name="supplier_name"
+                      class="form-control"
+                      maxlength="250"
+                      id="id_supplier_name"
+                      class="form-control"
+                      required=""
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="id_supplier">Supplier Tel</label>
+
+                    <input
+                      type="text"
+                      name="supplier_tel"
+                      class="form-control"
+                      maxlength="250"
+                      id="id_supplier_tel"
+                      class="form-control"
+                      required=""
+                    />
+                  </div>
+                </div>
+                <div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Supplier</th>
+                        <th scope="col">Tel</th>
+
+                      </tr>
+                    </thead>
+                    <tbody id="supplier_table">
+
+                    </tbody>
+                  </table>
+                  <div class="row">
+                  <div class="col-md-6">
+
+                  </div>
+                  <div class="col-md-6">
+                                <a
+                class="btn"
+                id="change_id_storeLocation"
+                data-href-template="/admin/inventory/storelocation/__fk__/change/?_to_field=id&amp;_popup=1"
+                title="Change selected store location"
+                ><img
+                  src="/static/admin/img/icon-changelink.svg"
+                  alt="Change" /></a
+              ><a
+                class="btn"
+                target="popup"
+                id="add_id_storeLocation"
+                href="/inventory/add-store-location/"
+                onclick="window.open('{% url 'create_product' %}?_popup=1','popup','width=600,height=600'); return false;"
+                title="Add another store location"
+                ><img src="/static/admin/img/icon-addlink.svg" alt="Add" /></a
+              ><a
+                class="btn"
+                id="delete_id_storeLocation"
+                data-href-template="/admin/inventory/storelocation/__fk__/delete/?_to_field=id&amp;_popup=1"
+                title="Delete selected store location"
+                ><img src="/static/admin/img/icon-deletelink.svg" alt="Delete"
+              /></a>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div>
+              <label class="required" for="id_stockQuantity"
+                >StockQuantity:</label
+              >
+
+              <input
+                type="number"
+                name="stockQuantity"
+                class="form-control"
+                min="0"
+                required=""
+                id="id_stockQuantity"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div>
+              <label class="required" for="id_lowStock">Low Stock:</label>
+
+              <input
+                type="number"
+                name="lowStock"
+                class="form-control"
+                min="0"
+                required=""
+                id="id_stockQuantity"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div>
+              <label class="required" for="id_unit">Unit:</label>
+
+              <input
+                type="text"
+                name="unit"
+                class="form-control"
+                maxlength="50"
+                id="id_unit"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div>
+              <label for="id_storeLocation">StoreLocation:</label>
+              <a
+                class="btn"
+                id="change_id_storeLocation"
+                data-href-template="/admin/inventory/storelocation/__fk__/change/?_to_field=id&amp;_popup=1"
+                title="Change selected store location"
+                ><img
+                  src="/static/admin/img/icon-changelink.svg"
+                  alt="Change" /></a
+              ><a
+                class="btn"
+                id="add_id_storeLocation"
+                href="/admin/inventory/storelocation/add/?_to_field=id&amp;_popup=1"
+                onclick="window.open('{% url 'create_store_location' %}?_popup=1','popup','width=600,height=600'); return false;"
+                title="Add another store location"
+                ><img src="/static/admin/img/icon-addlink.svg" alt="Add" /></a
+              ><a
+                class="btn"
+                id="delete_id_storeLocation"
+                data-href-template="/admin/inventory/storelocation/__fk__/delete/?_to_field=id&amp;_popup=1"
+                title="Delete selected store location"
+                ><img src="/static/admin/img/icon-deletelink.svg" alt="Delete"
+              /></a>
+
+              <select
+                class="form-control"
+                name="storeLocation"
+                id="id_storeLocation"
+                required=""
+              >
+                <option value="" selected="">---------</option>
+                {% for location in storeLocations %}
+                <option value="{{location.pk}}">{{location}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div>
+              <label for="id_stockInTime">Stocked in Time:</label>
+              <input
+                type="date"
+                name="stockInTime"
+                class="form-control"
+                size="10"
+                id="id_stockInTime"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div>
+              <label for="id_quanlity">Quanlity:</label>
+
+              <select class="form-control" name="quanlity" id="id_quanlity">
+                <option value="" selected="">---------</option>
+
+                <option value="1">1</option>
+
+                <option value="2">2</option>
+
+                <option value="3">3</option>
+
+                <option value="4">4</option>
+
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div>
+              <label for="id_category">Category:</label>
+              <a
+                class="btn"
+                id="change_id_storeLocation"
+                data-href-template="/admin/inventory/storelocation/__fk__/change/?_to_field=id&amp;_popup=1"
+                title="Change selected store location"
+                ><img
+                  src="/static/admin/img/icon-changelink.svg"
+                  alt="Change" /></a
+              ><a
+                class="btn"
+                target="popup"
+                id="add_id_storeLocation"
+                href="/inventory/add-store-location/"
+                onclick="window.open('{% url 'create_product' %}?_popup=1','popup','width=600,height=600'); return false;"
+                title="Add another store location"
+                ><img src="/static/admin/img/icon-addlink.svg" alt="Add" /></a
+              ><a
+                class="btn"
+                id="delete_id_storeLocation"
+                data-href-template="/admin/inventory/storelocation/__fk__/delete/?_to_field=id&amp;_popup=1"
+                title="Delete selected store location"
+                ><img src="/static/admin/img/icon-deletelink.svg" alt="Delete"
+              /></a>
+              <select class="form-control" name="category" id="id_category">
+                <option value="" selected="">---------</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div>
+              <label for="id_orderTime">OrderTime:</label>
+
+              <input
+                type="date"
+                name="orderTime"
+                class="form-control"
+                min="0"
+                id="id_orderTime"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div>
+              <label for="id_sellPrice">SellPrice:</label>
+
+              <input
+                type="number"
+                name="sellPrice"
+                step="any"
+                id="id_sellPrice"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div>
+              <label for="id_buyPrice">BuyPrice:</label>
+
+              <input
+                type="number"
+                name="buyPrice"
+                step="any"
+                id="id_buyPrice"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div>
+              <label for="id_decription">Decription:</label>
+
+              <textarea
+                name="decription"
+                cols="40"
+                rows="10"
+                class="form-control"
+                id="id_decription"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="row" style="margin: 0px">
+            <button
+              type="submit"
+              value="Save"
+              class="btn btn-block btn-primary mt-1"
+              name="_save"
+            >
+              Save
+            </button>
+
+            {% comment %}
+            <button
+              type="submit"
+              value="Save and add another"
+              class="btn btn-block btn-primary mt-1 disabled"
+              name="_addanother"
+            >
+              Save and add another
+            </button>
+            <button
+              type="submit"
+              value="Save and continue editing"
+              class="btn btn-block btn-primary mt-1 disabled"
+              name="_continue"
+            >
+              Save and continue editing
+            </button>
+            {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-4 container">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="card-title">Product</h6>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Code</th>
+            <th scope="col">Stock-in Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr id="products">
+            {% comment %}
+            <td>{{product.productName}}</td>
+            <td>{{product.productCode}}</td>
+            <td>{{product.stockInTime}}</td>
+            {% endcomment %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

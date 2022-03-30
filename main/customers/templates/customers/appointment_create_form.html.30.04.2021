@@ -1,0 +1,227 @@
+
+{% extends "customers/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-body">
+          <div class="row">
+            <div class="col">
+            <h3>Appointment</h3>
+            </div>
+            <div class="col">
+              <h6>Prefer Time: {{prefer_time|date:'l'}} {{prefer_time|date:'d-m-Y H:i:s'}}</h6>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="card card-body">
+          <div class="form-group">
+          <!-- Form start -->
+
+
+
+              <div class="row">                                    
+                <div class="col form-group">
+                    <h5>Customer</h5>
+                </div>
+
+                  <div class="col form-group">
+
+                        <input id="id_search" name="firstName" type="text" placeholder="Search" class="form-control input-md">
+                  </div>
+              </div>
+              <form method="POST">
+                {% csrf_token %}
+              <input type="hidden" name="salon_account" id="salon_account" value="{% url 'salonaccount-detail' salonAcc.pk %}"> 
+              {% comment %} <input type="hidden" name="viewdate" value="{{appntDate}}"> {% endcomment %}
+              <input type="hidden" id="prefer_time" name="prefer_time" value="{{prefer_time|date:'Y-m-d H:i:s'}}"> 
+              {% comment %} <input type="hidden" name="stylist" value="{{appntStylist.pk}}"> {% endcomment %}
+              <input type="hidden" id="current_appointment" name="current_appointment" value="">  
+              <!-- Text input-->                      
+              <div id="cus_info" class="row">
+                
+                  <div class="col-xl-2">
+                    <div class="form-group">
+                        <label class="control-label" for="cus_id">ID</label>
+                        <input id="cus_id" name="cus_id" type="text" class="form-control input-md">
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="form-group">
+                        <label class="control-label" for="id_firstName">Firstname</label>
+                        <input id="id_firstName" name="firstName" type="text" placeholder="Firstname" class="form-control input-md" required="">
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="form-group">
+                        <label class="control-label" for="id_lastName">Lastname</label>
+                        <input id="id_lastName" name="lastName" type="text" placeholder="Lastname" class="form-control input-md" required="">
+                    </div>
+                </div>
+                
+                <div class="col-xl-3">
+                    <div class="form-group">
+                        <label class="control-label" for="id_mobile">Mobile</label>
+                        <input id="id_mobile" name="mobile" type="tel" placeholder="Mobile" class="form-control input-md">
+                    </div>
+                </div>
+            
+                <div class="col-xl-1" style="margin-top:40px; padding-left: auto;">
+                  <div class="form-group">
+                      <button class="btn btn-sm btn-danger" type="button" id="update_customer" name="update_customer" class="btn btn-dark">Update</button>
+                  </div>
+                </div>
+              </div>
+              <table id="myTable" style="margin:0px; height:150px; width:100%; overflow:auto;">             
+                <thead class="thead-dark">
+                  <tr>
+                    <th width=18%%>ID</th>
+                    <th width=25% >FirstName</th>
+                    <th width=25% >LastName</th>
+                    <th width=30% >Mobile</th>
+                    <th width=20% >Box</th>
+                    <th width=100%></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- {% for customer in customers %}
+                  <tr>
+                    <td id="firstName">{{customer.firstName}}</td>
+                    <td id="lastName">{{customer.lastName}}</td>
+                    <td id="mobile">{{customer.mobile}}</td>
+                    <td id="box">{{customer.box}}</td>
+                  </tr>
+                  {% endfor %} -->
+                </tbody>
+              </table>
+     
+         
+ 
+              <!-- Select Basic -->
+            <div id="appointment">
+              
+ 
+              <div class="row">
+                <div class="col-md-6" style="margin-top:0px">
+                  <div class="form-group">
+                    <label class="control-label" for="service"><h5>Appointment For</h5></label>
+                    <select id="service" name="service" class="form-control">
+                      {% for service in serviceblocks %}
+                        <option  value={{service.pk}}>{{service.name}}</option>
+                      {% endfor %}                                                                        
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6" style="margin-top:0px">
+                  <div class="form-group">
+                    <label class="control-label" for="stylist"><h5>Stylist</h5></label>
+                      <select id="stylist" name="stylist" class="form-control">
+                        <option value="">Not prefered</option>
+                        {% for stylist in stylists %}                                
+                         <option value="{{stylist.pk}}">{{stylist}}</option>
+                        {% endfor %}                                                                  
+                      </select>
+                  </div>
+                </div>
+              </div>
+
+ 
+
+              <!-- Check boxes -->         
+              <div class="form-group">
+                  <label class="control-label" for="appointmentfor">Extra services</label>
+                  <div class="card card-body">
+                    <div class="row ">
+                    {% for extra in extraservices %}
+                      <div class="col-md-4">
+                        <label for="{{extra}}"> {{extra.name}}</label>
+                        <input type="checkbox" id="{{extra.name}}" name="{{extra.name}}" value="">
+                      </div>
+                    {% endfor %}
+                    </div>                                 
+                  </div>                                                                 
+              </div>
+            </div>
+              <!-- Text input-->  
+              <div class="form-group">
+                  <label class="control-label" for="notice">Notice</label>
+                  <input id="notice" name="notice" type="text" placeholder="Notice to Creatip team!" class="form-control input-md">
+              </div>         
+
+                <div class="row" id="datetime">                                                                                                                                             
+                  <div class="col-md-6" style="margin-top:0px">
+                    <label class="control-label" for="date">Available Date</label>
+                      <select class="form-control" name="date" id="date">
+   
+                      </select>
+                  </div>  
+
+
+                  <div class="col-md-6" style="margin-top:0px">
+                      <label class="control-label" for="time">Available Time</label>
+                          <select class="form-control" name="time" id="time">
+     
+                          </select>
+                  </div>                                                                                                                                                                                         
+                </div>
+                <!-- Button -->  
+                  <div class="col-md-12" style="margin-top:25px">
+                    <div class="form-group">
+                        <button id="appontbutton" name="appontbutton" class="btn btn-dark">Make An Appointment</button>
+                    </div>
+                  </div>
+                
+
+            </form>
+            <!-- form end -->                                          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<style>
+    /* scrolltable rules */
+  table  { margin-top:  20px; display: inline-block; overflow: auto; }
+  th div { margin-top: -20px; position: absolute; }
+
+  /* design */
+  table { border-collapse: collapse; }
+  tr:nth-child(even) { background: #EEE; }
+</style>
+
+
+
+
+
+{% endblock content %}
+
+  {% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static '/js/appointment_create.js'%}"></script>
+<script>
+$(document).on("click", "#cus_info", function(){
+  // console.log(this.children)
+  let elements = this.children
+  $.each(elements, function(index, item) {
+    if (this.name == 'cus_firstname'){
+      console.log(this)
+    }
+    
+    
+  })
+});
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static '/js/customer.js'%}"></script>
+</script>
+
+    {% endblock js %}

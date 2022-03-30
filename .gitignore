@@ -1,0 +1,13 @@
+/venv
+/static
+/main/static
+/main/users/static
+/main/main/static
+/main/users/templates/users/examples
+/main/users/templates/users/docs
+/main/main/__pycache__
+/main/customers/__pycache__
+/main/inventory/__pycache__
+/main/logs/__pycache__
+/main/sms/__pycache__
+/main/users/__pycache__

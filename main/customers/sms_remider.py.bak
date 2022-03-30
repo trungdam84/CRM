@@ -1,0 +1,58 @@
+from appointments.models import Appointment
+from sms.models import QueueSMS
+import datetime, time, threading
+from pathlib import Path
+import logging, os
+from django.conf import settings
+
+logs_path = os.path.join(Path(settings.BASE_DIR).parents[0], 'logs')
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+
+file_handler = logging.FileHandler(os.path.join(logs_path, 'remider.log'))
+
+file_handler.setLevel(logging.WARNING)
+file_handler.setFormatter(formatter)
+
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
+
+def sms_remider():
+    while 1:
+        try:
+            # print('loop')
+            _time = datetime.datetime.now() + datetime.timedelta(hours=2)
+            appointments = Appointment.objects.filter(dateTime__range=(_time, (_time + datetime.timedelta(minutes=15))))
+            for appointment in appointments:
+                if appointment.customer.mobile:
+                    cancel_mes = 'To cancel go to. https://{}/appointment-cancel/?id={}'.format(appointment.salonAcc.website, appointment.cancelID)
+                        # message = '{}: Your appointment at {} has been successfully booked. {}'.format(salonAcc.salonName, datetime.strptime(req['time'], '%Y-%m-%d %H:%M:%S').strftime('%H:%M %A %d-%m-%Y'), cancel_mes)
+                        
+                        # if len(message) <= 160:
+                            
+                        #     queueMSM(salonAcc, message, appointment.customer.mobile)
+                        # else:
+                        #     message = '{}: Your appointment at {} has been successfully booked.'.format(salonAcc.salonName, datetime.strptime(req['time'], '%Y-%m-%d %H:%M:%S').strftime('%H:%M %A %d-%m-%Y'))
+                        #     queueMSM(salonAcc, message, appointment.customer.mobile)
+                        #     cancel_mes = '{}: To cancel please follow the link. https://{}/appointment-cancel/?id={}'.format(salonAcc.salonName, salonAcc.website, appointment.cancelID)
+                        #     queueMSM(salonAcc, cancel_mes, appointment.customer.mobile)
+                    q_sms = QueueSMS(message='{}: This is reminder of your Nails appointment today at {}. {}'.format(appointment.salonAcc.salonName, appointment.dateTime.time(), cancel_mes), destination=appointment.customer.mobile)
+                    q_sms.save()
+                    print('sent remider', appointment.dateTime)
+            if datetime.datetime.now().minute%15 != 14:
+                time.sleep(60*(15-datetime.datetime.now().minute%15))
+            else:
+                time.sleep(60*15)
+        except Exception as e:
+            logger.error(e)
+
+
+smsrmd = threading.Thread(target = sms_remider, name = 'thread{}'.format('sms sms_remider loop'), args=())
+smsrmd.daemon = True
+smsrmd.start()

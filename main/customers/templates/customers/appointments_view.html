@@ -1,0 +1,132 @@
+
+{% extends "customers/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+{{cus_apnts}}
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-6">
+            <div>
+
+            <h3>Customer: {{cus}}</h3>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="form-group">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <table cellspacing="0" cellpadding="0" border="1" width="800">
+                          <div>
+                              <tr>
+                                  <th width="200">Appointment</th>
+                                  <th width="480">Services</th>
+                                  <th width="120">Cancel</th>
+  
+                              </tr>
+                          </div>
+                      </table>
+                          <div>
+                              <table id="myTable" border="1" style="width:800px; height:100px; overflow:auto;">
+
+
+  
+                              {% for appnt in appnts %}
+                               <tr>
+                                  <td width="200">{{appnt.dateTime}}</td>
+
+                                  
+                                  <td width="500">{{ appnt.service }} {% for extra in appnt.extras.all %}{{extra.name}} {% endfor %}</td>
+                                  
+                                  <td width="100"><input type="checkbox" name="{{appnt.pk}}" id="{{appnt.pk}}"></td>
+                                   
+                               </tr>
+                               {% endfor %}
+                             </table>  
+                           </div>
+                        <br>
+
+                               
+                                  <div class="col-sm">
+                                    <button class="btn btn-sucess btn-outline-info" type="submit">Save</button>
+                                  </div>
+                                </div>                                  
+
+
+
+                    
+
+                    </form>
+                     
+
+
+              <style>
+                  /* scrolltable rules */
+                table  { margin-top:  20px; display: inline-block; overflow: auto; }
+                th div { margin-top: -20px; position: absolute; }
+
+                /* design */
+                table { border-collapse: collapse; }
+                tr:nth-child(even) { background: #EEE; }
+              </style>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#id_firstName").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  $("tr").click(function(){
+    var values = $(this).text();
+    values = values.replace(/(\r\n|\n|\r)/gm," ");
+    values = values.replace(/\s+/g," ");
+    values = values.split(' ')
+    // alert(values[1]);
+    document.getElementById('id_firstName').value = values[1];
+    document.getElementById('id_lastName').value = values[2];
+    document.getElementById('id_mobile').value = values[3];
+  });
+});
+
+
+
+
+// $.ajax({
+//   url: '/customers/',
+//   dataType: 'json',
+//   type: 'get',
+//   cache: 'false',
+//   success: function(data){
+//     let times = [];
+//     let ccs = [];
+//     $(data.results).each(function(index, value) {
+//         ccs[index] = value.CCs
+//         times[index] = value.TimeStamp.split('T')[1].split('.')[0].substring(0, 5);
+
+//     });
+//   }
+// })
+
+
+
+
+</script>
+
+
+{% endblock content %}

@@ -1,0 +1,298 @@
+{% extends "customers/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-body">
+          <div class="row">
+            <div class="col">
+            <h5>Customer: {{appointment.customer}}</h5>
+            <h6>Mobile: {{appointment.customer.mobile}}</h6>
+            <h6>Box: {{locker.boxNumber}}</h6>
+            </div>
+            <div class="col">
+
+              <h6>Appointment Date: <a class="btn btn-sm btn-success" href="{% url 'appointments' %}?viewdate={{appointment.dateTime|date:'Y-m-d'}}">{{appointment.dateTime|date:'l'}} {{appointment.dateTime|date:'d-m-Y'}}</a></h6>
+              <h6>Appointment Time: {{appointment.dateTime|date:'H:i'}}</h6>
+              <h6>Services: {{appointment.service}} {% for extra in appointment.extras.all %}{{extra.name}} {% endfor %}</h6>
+              {% if appointment.status %}
+              <h6>Status: {{appointment.status}}</h6>
+              {% else %}
+              <h6>Status: Active</h6>
+              {% endif %}
+              {% if appointment.notice %}
+              <h6>Notice:</h6>
+              <div>{{appointment.notice}}</div>
+              {% endif %}
+            </div>
+          </div>
+     
+        </div>
+      </div>
+      {% if not appointment.status %}
+      <div class="col-sm-12">
+        <div class="card card-body">
+          <div class="form-group">
+            <div class="collapse" id="cancelAppointment">
+              <form method="POST">
+              {% csrf_token %}
+                <div class="row">
+                  <div class="col-sm-8 form-group">              
+                    <label for="cancel"> <h6>Cancel Appoinment: {{appointment.dateTime|date:'H:i'}} {{appointment.dateTime|date:'l'}} {{appointment.dateTime|date:'d-m-Y'}}</h6></label>
+                  </div>
+                  <input type="hidden" id="current_appointment" name="current_appointment" value="{{appointment.pk}}">
+                  <div class="col-sm-4 text-right form-group">  
+                    <button class="btn btn-danger" type="submit" name="confirm">Confirm</button>
+                  </div>
+            
+        
+                </div>
+              </form>
+            </div>
+            <div class="collapse" id="statusAppointment">
+              <form method="POST">
+ 
+              {% csrf_token %}
+                <div class="row">
+                  <div class="col-sm-4 form-group">              
+                    <label for="cancel"> Appoinment status</label>
+                  </div>
+                  <div class="col-sm-4 form-group">
+                    <select id="appointment_status" name="appointment_status" class="form-control">
+                    {% if appointment.status %}
+                    {% for status in appointment_status %}                      
+                      <option  value={{status.pk}}>{{status.status}}</option>
+                      {% if status == appointment.status %}
+                      <option  value={{status.pk}} selected>{{status.status}}</option>
+                      {% else %}
+                      <option  value={{status.pk}}>{{status.status}}</option>
+                      {% endif %}
+
+                    {% endfor %} 
+                    {% else %}
+                    <option  value=''>Active</option>    
+                    {% for status in appointment_status %}                      
+            
+                      <option  value={{status.pk}}>{{status.status}}</option>
+     
+
+                    {% endfor %}     
+                    {% endif %}                                                                
+                    </select>
+                  </div>
+                  <div class="col-sm-4 form-group">  
+                    <button class="btn btn-danger" type="submit" name="update_status">Update status</button>
+                  </div>
+            
+        
+                </div>
+              </form>
+            </div>
+            <!-- Button -->
+            <div class="form-group">     
+              <button id="appontbutton" name="appontbutton" class="btn btn-dark"  data-toggle="collapse" href="#updateAppointment" role="button" aria-expanded="false" aria-controls="updateAppointment">Update Appointment</button>     
+              <button id="appontbutton" name="appontbutton" class="btn btn-dark"  data-toggle="collapse" href="#statusAppointment" role="button" aria-expanded="false" aria-controls="cancelAppointment">Appoinment Status</button>
+              <button id="appontbutton" name="appontbutton" class="btn btn-danger"  data-toggle="collapse" href="#cancelAppointment" role="button" aria-expanded="false" aria-controls="cancelAppointment">Cancel Appointment</button> 
+            </div>
+            
+
+            <div class="collapse" id="updateAppointment">
+              <form method="POST" id="updateform">
+                {% csrf_token %}
+                <input type="hidden" id="prefer_time" name="prefer_time" value="{{appointment.dateTime|date:'Y-m-d H:i:s'}}">
+                <div id="appointment">
+                <input type="hidden" id="current_appointment" name="current_appointment" value="{{appointment.pk}}">
+                  <!-- Select Basic -->
+                  <div class="row" id="services">
+                    <div class="col-md-6" style="margin-top:0px">                 
+                      <div class="form-group">
+                        <label class="control-label" for="service"><h5>Appointment For</h5></label>
+                        <select id="service" name="service" class="form-control">
+                          {% for service in serviceblocks %}
+                            {% if service == appointment.service %}
+                            <option  value={{service.pk}} selected>{{service.name}}</option>
+                            {% else %}
+                            <option  value={{service.pk}}>{{service.name}}</option>
+                            {% endif %}
+                          {% endfor %}                                                                        
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6" style="margin-top:0px">
+                      <div class="form-group">
+                        <label class="control-label" for="stylist"><h5>Stylist</h5></label>
+                          <select id="stylist" name="stylist" class="form-control">
+                            <option value="">Not prefered</option>
+                            {% for stylist in stylists %}
+                            {% if appointment.stylist == stylist %}                
+                            <option selected value="{{stylist.pk}}">{{stylist}}</option>
+                            {% else %}
+                            <option value="{{stylist.pk}}">{{stylist}}</option>
+                            {% endif %}
+                            {% endfor %}                    
+
+                                                                                              
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Check boxes -->         
+                  <div class="form-group">
+                      <label class="control-label" for="appointmentfor">Extra services</label>
+                      <div class="card card-body">
+                        <div class="row" id="extras">
+                        {% for extra in extraservices %}
+        
+                          {% if extra in appointment.extras.all %}
+                          <div class="col-md-4">
+                            <label for="{{extra}}"> {{extra.name}}</label>
+                            <input checked type="checkbox" id="{{extra.name}}" name="{{extra.name}}" value="">
+                          </div>
+                          {% else %}
+                          <div class="col-md-4">
+                            <label for="{{extra}}"> {{extra.name}}</label>
+                            <input type="checkbox" id="{{extra.name}}" name="{{extra.name}}" value="">
+                          </div>
+                          {% endif %}
+                        {% endfor %}
+                        </div>                                 
+                      </div>                                                                 
+                  </div>
+                 </div>
+                  <!-- Text input-->  
+                  <div class="form-group">
+                      <label class="control-label" for="notice">Notice</label>
+                      <input id="notice" name="notice" type="text" placeholder="Notice to Creatip team!" class="form-control input-md">
+                  </div> 
+               
+                <div class="row" id="datetime">                                                                                                                                             
+                  <div class="col-md-6" style="margin-top:0px">
+                    <label class="control-label" for="date">Available Date</label>
+                      <select class="form-control" name="date" id="date">
+                          {% for appdate in availDates %}
+                              {% if appdate == prefer_date %}
+                                  <option selected value="{{appdate|date:'Y-m-d'}}">{{appdate|date:"l"}} {{appdate}}</option>
+                              {% else %}
+                                  <option value="{{appdate|date:'Y-m-d'}}">{{appdate|date:"l"}} {{appdate}}</option>
+                              {% endif %}
+                          {% endfor %}
+                      </select>
+                  </div>  
+
+
+                  <div class="col-md-6" style="margin-top:0px">
+                      <label class="control-label" for="time">Available Time</label>
+                        <select class="form-control" name="time" id="time">
+                            {% for time in availTimes %}
+                                {% if time == prefer_time %}
+                                    <option selected value="{{time|date:'Y-m-d H:i:s'}}">{{time|date:'H:i'}}</option>
+                                {% else %}
+                                    <option value="{{time|date:'Y-m-d H:i:s'}}">{{time|date:'H:i'}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                  </div>
+                  </div>                                                                                                                                                                                         
+                  <!-- Button -->
+                  <div class="col-md-12" style="margin-top:25px">
+                      <div class="form-group">
+                          <button id="update_appointment" name="update_appointment" class="btn btn-success">Update</button>
+                      </div>
+                  </div>
+                
+              </form>           
+            </div>
+            <!-- form end -->                                          
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% if appnts %}
+<form method="POST">
+<input type="hidden" id="current_appointment" name="current_appointment" value="{{appointment.pk}}">
+{% csrf_token %}
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="card card-body">
+        <h5>{{appointment.customer}}'s other appointments</h5>
+        <hr>
+        <table id="other_appointment" style="margin:0px; height:150px; width:100%; overflow:auto;">             
+          <thead class="thead-dark">
+            <tr>
+              <th width="30%">Appointment</th>
+              <th width="40%">Services</th>
+              <th width="40%">Status</th>              
+              <th width="10%">Cancel</th>
+              <th width="10%"></th>    
+ 
+            </tr>
+          </thead>
+          <tbody>
+          {% for appnt in appnts %}
+
+
+            <tr>
+              <td width="30%"><a class="other_appointment" href="{% url 'update-appointment' appnt.pk %}">{{appnt.dateTime|date:'Y-m-d H:i'}}</a></td>                                  
+              <td width="40%">{{ appnt.service }} {% for extra in appnt.extras.all %}{{extra.name}} {% endfor %}</td>
+              <td width="40%">{{ appnt.status }}</td>                                    
+              <td width="10%"><input type="checkbox" name="{{appnt.pk}}" id="{{appnt.pk}}"></td>
+              <td width="10%"></td>                                   
+            </tr>
+
+
+          {% endfor %}
+          </tbody>
+          <thead class="thead-dark" style="margin-top:0px;">
+            <tr>
+              <th width="40%"></th>
+              <th width="40%">Cancel all</th>
+              <th width="40%"></th>  
+              <th width="10%"><input type="checkbox" name="cancel_all" id="cancel_all"></th>  
+              <th width="10%"></th>  
+            </tr>
+          </thead>
+        </table>
+        <hr>
+        <div class="col-md-12 text-right" style="margin-top:0px; margin-bottom:0px;">
+          
+            <button id="delete" name="delete" class="btn btn-danger " type="submit">Cancel</button>
+   
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</form>
+{% endif %}
+
+<style>
+    /* scrolltable rules */
+  table  { margin-top:  20px; display: inline-block; overflow: auto; }
+  th div { margin-top: -20px; position: absolute; }
+
+  /* design */
+  table { border-collapse: collapse; }
+  tr:nth-child(even) { background: #EEE; }
+</style>
+
+
+
+
+
+{% endblock %}
+
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static '/js/appointment_update.js'%}"></script>
+
+{% endblock js %}

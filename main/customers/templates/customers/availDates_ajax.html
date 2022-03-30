@@ -1,0 +1,11 @@
+
+<select class="form-control" name="date" id="date">
+    {% for appdate in availDates %}
+        {% if appdate == prefer_date %}
+            <option selected value="{{appdate|date:'Y-m-d'}}">{{appdate|date:"l"}} {{appdate}}</option>
+        {% else %}
+            <option value="{{appdate|date:'Y-m-d'}}">{{appdate|date:"l"}} {{appdate}}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+

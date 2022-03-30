@@ -1,0 +1,23 @@
+2021-12-12 18:32:03,727:__main__:SMS module loaded
+2021-12-12 18:32:03,748:__main__:1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+Traceback (most recent call last):
+  File "asms.py", line 78, in sendSMS
+    password='Creatip1')
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\venv\lib\site-packages\mysql\connector\__init__.py", line 273, in connect
+    return MySQLConnection(*args, **kwargs)
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\venv\lib\site-packages\mysql\connector\connection.py", line 107, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\venv\lib\site-packages\mysql\connector\abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\venv\lib\site-packages\mysql\connector\connection.py", line 354, in _open_connection
+    self._ssl, self._conn_attrs)
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\venv\lib\site-packages\mysql\connector\connection.py", line 219, in _do_auth
+    self._auth_switch_request(username, password)
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\venv\lib\site-packages\mysql\connector\connection.py", line 318, in _auth_switch_request
+    raise errors.get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+2021-12-12 18:33:07,423:__main__:SMS module loaded
+2021-12-12 18:33:07,434:__main__:Total number of rows in table: 1
+2021-12-12 18:33:07,434:__main__:
+Printing each row
+2021-12-12 18:33:07,674:__main__:Sms send 07401384305 This is verification message from Creatip Your verification code is 7148.

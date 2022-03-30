@@ -1,0 +1,107 @@
+{% extends 'customers/base.html' %}
+
+
+
+{% block content %}
+
+
+<div class="dataTables_wrapper">
+    <div style="margin:20px">
+        <a class="btn btn-primary ml-auto" href="{% url 'create-customer' %}">Create new customer</a>
+    </div>
+    <div class="row">
+                    <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label" for="id_firstName">Firstname</label>
+                        <input id="id_firstName" name="firstName" type="text" placeholder="Firstname" class="form-control input-md" required="">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label" for="id_lastName">Lastname</label>
+                        <input id="id_lastName" name="lastName" type="text" placeholder="Lastname" class="form-control input-md" required="">
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label" for="id_mobile">Mobile</label>
+                        <input id="id_mobile" name="mobile" type="tel" placeholder="Mobile" class="form-control input-md">
+                    </div>
+                </div>
+    </div>
+        
+
+    <hr>
+    <table id="myTable" class="table-striped" style="margin:0px; height:150px; width:100%; overflow:auto;">      
+   
+
+        
+    </table>
+</div>
+
+<script>
+$(document).ready(function(){
+    $("#id_box").on("keyup", function() {
+  
+      let value = $(this).val().toLowerCase();
+        $.ajax({
+            url: '/staff/customer_search/',
+            data: {box:value},
+            dataType: 'text',
+            type: 'get',
+            cache: 'false',
+            success: function(cusdata){
+              $("#myTable").replaceWith(cusdata)
+            }
+        });
+      
+    });
+    $("#id_firstName").on("keyup", function() {
+      let lastname = $("#id_lastName").val().toLowerCase();
+      let firstname = $(this).val().toLowerCase();
+        $.ajax({
+            url: '/staff/customer_search/',
+            data: {firstname:firstname, 
+                    lastname:lastname},
+            dataType: 'text',
+            type: 'get',
+            cache: 'false',
+            success: function(cusdata){
+              $("#myTable").replaceWith(cusdata)
+            }
+        });
+      
+    });
+    $("#id_lastName").on("keyup", function() {
+      let firstname = $("#id_firstName").val().toLowerCase();
+      let lastname = $(this).val().toLowerCase();
+        $.ajax({
+            url: '/staff/customer_search/',
+            data: {firstname:firstname, 
+                   lastname:lastname},
+            dataType: 'text',
+            type: 'get',
+            cache: 'false',
+            success: function(cusdata){
+              $("#myTable").replaceWith(cusdata)
+            }
+        });
+      
+    });
+
+
+
+
+
+
+});
+</script>
+
+
+{% endblock content %}
+
+{% block js %}
+
+
+{% endblock js %}

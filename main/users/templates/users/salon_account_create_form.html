@@ -1,0 +1,955 @@
+{% extends "customers/base.html" %}
+{% comment %} {% extends "users/base.html" %} {% endcomment %}
+
+{% block content %}
+
+
+
+
+
+<main>
+  <div class="card">
+    <div class="card-header card-header-primary">
+      <h4 class="card-title">Edit Salon Profile</h4>
+      <p class="card-category">Complete your profile</p>
+    </div>
+    <div class="card-body">
+      <form id="profile" method="POST">
+   
+        <div class="row">
+          {% if salonAcc %}
+          <input type="hidden" name="salon_account" id="salon_account" value="{% url 'salonaccount-detail' salonAcc.pk %}">    
+          {% endif %}
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Salon website</label>
+              <input type="text" name="website" id="website" class="form-control" >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Salon Name</label>
+              <input type="text" name="salonName" id="salonName" class="form-control" >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Telephone</label>
+              <input type="tel" name="tel" id="tel" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Slogan</label>
+              <input type="text" name="slogan" id="slogan" class="form-control">
+            </div>
+          </div>
+
+      </div>
+      <h4 style="margin-top: 20px;"><strong>Social Networks</strong></h4>
+        <div class="row">
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Facebook</label>
+              <input type="text" name="fblink" id="fblink" class="form-control" >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Snapchat</label>
+              <input type="text" name="snaplink" id="snaplink" class="form-control" >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Instagram</label>
+              <input type="tel" name="istarlink" id="istarlink" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Twitter</label>
+              <input type="email" name="twitlink" id="twitlink" class="form-control">
+            </div>
+          </div>
+      </div>
+      <h4 style="margin-top: 20px;"><strong>Details</strong></h4>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Fist Name</label>
+              <input type="text" name="firstName" id="firstName" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Last Name</label>
+              <input type="text" name="lastName" id="lastName" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="bmd-label-floating">Email address</label>
+              <input type="email" name="email" id="email" class="form-control">
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="bmd-label-floating">Adress</label>
+              <input type="text" name="address" id="address" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating">City</label>
+              <input type="text" name="town" id="town" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating">County</label>
+              <input type="text" name="county" id="county" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating">Post Code</label>
+              <input type="text" name="postcode" id="postcode" class="form-control">
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center" style="margin-top: 20px;">
+          <button type="button" id="save_profile" class="btn btn-success" >Save</button>
+      </div>   
+
+      </form>
+
+{% if salonAcc %}
+
+  <div id="stylists" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="card-title">Add Salon Stylist</h4>
+                  
+
+
+                </div>
+                <div class="card-body">
+                  <form id="stylist_form" method="POST">       
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Fist Name</label>
+                          <input type="text" id="firstName" name="firstName" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Last Name</label>
+                          <input type="text" id="lastName" name="lastName" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Email address</label>
+                            <input type="email" name="email" class="form-control">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Mobile</label>
+                          <input type="tel" name="mobile" class="form-control">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="text-center" style="margin-top: 20px;">
+                      <button type="button" id="add_stylist" class="btn btn-success" >Add</button>
+                  </div>       
+                  </form>
+                </div>
+
+              </div>
+        </div>
+    </div>
+  </div>
+
+<div id="services" class="modal fade">
+  <div class="modal-dialog">
+      <div class="modal-content">
+
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="card-title">Add Salon Service</h4>
+                
+
+
+              </div>
+              <div class="card-body">
+                <form id="service_form" method="POST">       
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">Service Name</label>
+                        <input type="text" id="serviceName" name="name" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      <label class="bmd-label-floating">Length</label>
+                      <select class="form-control" name="length" required="" id="service_length">
+                          <option value="15">15 minutes</option>
+                          <option value="30">30 minutes</option>
+                          <option value="45">45 minutes</option>
+                          <option value="60">60 minutes</option>
+                          <option value="75">75 minutes</option>
+                          <option value="90">90 minutes</option>
+                          <option value="105">105 minutes</option>
+                          <option value="120">120 minutes</option>
+                          <option value="135">135 minutes</option>
+                          <option value="150">150 minutes</option>
+                          <option value="165">165 minutes</option>
+                          <option value="180">180 minutes</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      <label class="bmd-label-floating">Ped Chair</label>
+                      <select class="form-control" name="pedicure_chair_length" required="" id="pedicure_chair_length">
+                          <option value="">Pedicure chair not required</option>
+                          <option value="15">15 minutes</option>
+                          <option value="30">30 minutes</option>
+                          <option value="45">45 minutes</option>
+                          <option value="60">60 minutes</option>
+                          <option value="75">75 minutes</option>
+                          <option value="90">90 minutes</option>
+                          <option value="105">105 minutes</option>
+                          <option value="120">120 minutes</option>
+                          <option value="135">135 minutes</option>
+                          <option value="150">150 minutes</option>
+                          <option value="165">165 minutes</option>
+                          <option value="180">180 minutes</option>
+                          </select>
+                      </div>
+                    </div>
+                 
+                  </div>
+                  <div class="text-center" style="margin-top: 20px;">
+                    <button type="button" id="add_service" class="btn btn-success" >Add</button>
+                </div>       
+                </form>
+              </div>
+       
+            </div>
+      </div>
+  </div>
+</div>
+
+<div id="extra_services" class="modal fade">
+  <div class="modal-dialog">
+      <div class="modal-content">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="card-title">Add Salon Extra Service</h4>             
+              </div>
+              <div class="card-body">
+                <form id="extra_service_form" method="POST">       
+                  {% comment %} <input type="hidden" name="salonAcc" value="{% url 'salonaccount-list' %}{{salonAcc}}/"> {% endcomment %}
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">Extra Service Name</label>
+                        <input type="text" id="extra_services" name="name" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      <label class="bmd-label-floating">Length</label>
+                      <select class="form-control" name="length" required="" id="extra_service_length">
+                          <option value="15">15 minutes</option>
+                          <option value="30">30 minutes</option>
+                          <option value="45">45 minutes</option>
+                          <option value="60">60 minutes</option>
+                          <option value="75">75 minutes</option>
+                          <option value="90">90 minutes</option>
+                          <option value="105">105 minutes</option>
+                          <option value="120">120 minutes</option>
+                          <option value="135">135 minutes</option>
+                          <option value="150">150 minutes</option>
+                          <option value="165">165 minutes</option>
+                          <option value="180">180 minutes</option>
+                          <option value="-15">- 15 minutes short</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="container h-100">
+                        <div class="row h-100 justify-content-center align-items-center form-group">
+                          <div class="form-group">                 
+                            <input class="form-check-input" type="checkbox" name="frontEnd" id="front_page">
+                            <label class="form-check-label" for="frontEnd">
+                              On Front Page
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+           
+  
+                 
+                  </div>
+                  <div class="text-center" style="margin-top: 20px;">
+                    <button type="button" id="add_extra_service" class="btn btn-success" >Add</button>
+                </div>       
+                </form>
+              </div>
+              <!-- <div class="modal-footer">
+                  <button type="button" id="add_service" class="btn btn-success" >Add</button>
+              </div> -->
+            </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+            
+
+
+
+    <div style="margin-top: 1em;" class="row">
+
+        <div class="col-md-12">
+          <div style="margin-top: 20px;" class="card-header card-header-primary">
+            <h5 class="card-title">Opening Times</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead class=" text-primary">
+                <th style="width: 30%;">
+                  Day
+                </th>
+                <th style="width: 30%;">
+                  Open
+                </th>
+                <th style="width: 30%;">
+                  Closed
+                </th>
+                <th style="width: 10%;">
+                
+                </th>
+              </thead>
+              <tbody id="openning_times_tbody">
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card-header card-header-primary">
+            <h5 class="card-title">Salon Stylists</h5>
+          </div>
+          <div class="card-body">
+            <table id="stylists_table" class="table table-bordered">
+              <thead class=" text-primary">
+                <th>
+                  First Name
+                </th>
+                <th>
+                  Last Name
+                </th>
+                <th style="width: 20%;">
+                  <button class="btn btn-sm btn-success" id="stylist_modal" href="#" title="View" data-target="#stylists" data-toggle="modal">Add more</button>
+                </th>
+              </thead>
+              <tbody id="stylists_tbody">
+
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card-header card-header-primary">
+            <h5 class="card-title">Salon Services</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead class=" text-primary">
+                <th>
+                  Service
+                </th>
+                <th style="width: 10%;">
+                  Length
+                </th>
+                <th style="width: 10%;">
+                  Ped Chair
+                </th>
+                <th style="width: 10%;">
+                  <button class="btn btn-sm btn-success" id="services_modal" title="View" data-target="#services" data-toggle="modal">Add more</button>
+                </th>
+              </thead>
+              <tbody id="services_tbody">
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card-header card-header-primary">
+            <h5 class="card-title">Salon Extra Services</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead class=" text-primary">
+                <th>
+                  Extra Service
+                </th>
+                <th style="width: 10%;">
+                  Length
+                </th>
+                <th style="width: 10%;">
+                  Front Page
+                </th>
+                <th style="width: 10%;">
+                  <button class="btn btn-sm btn-success" id="extra_services_modal" title="View" data-target="#extra_services" data-toggle="modal">Add more</button>
+                </th>
+              </thead>
+              <tbody id="extra_services_tbody">
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    </div>
+  </div>
+{% endif %}
+
+
+</main>
+
+
+ 
+{% endblock content %}
+<style>
+.btn-mg-r {
+  margin: 10px;
+}
+
+.btn-sq-lg {
+  width: 150px !important;
+  height: 150px !important;
+}
+
+.btn-sq {
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 10px;
+}
+
+.btn-sq-sm {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 10px;
+}
+
+.btn-sq-xs {
+  width: 25px !important;
+  height: 25px !important;
+  padding:2px;
+}
+
+</style>
+
+{% comment %} {% block scripts %} {% endcomment %}
+{% block js %}
+<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+var weekday = new Array(7);
+    weekday[0] = 'Moday';
+    weekday[1] = 'Tuesday';
+    weekday[2] = 'Wednesday';
+    weekday[3] = 'Thursday';
+    weekday[4] = 'Friday';
+    weekday[5] = 'Saturday';
+    weekday[6] = 'Sunday';
+$(document).ready(function(){
+  let firstNameExists = document.getElementById("firstName");
+  let lastNameExists = document.getElementById("lasstName");
+  // console.log(firstNameExists)
+  if ( firstNameExists != null){
+    bootstrapValidate(
+   '#firstName',
+   'min:3:Enter firstname at least 3 characters'
+  );
+  }
+  if (lastNameExists){
+    bootstrapValidate(
+   '#lastName',
+   'min:3:Enter lastname at least 3 characters'
+  );
+  }
+
+});
+
+function fill_profile_form(){
+
+  let url = document.getElementById('salon_account').value
+  $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(data) {
+          // console.log(data)
+          if ( data != null){ 
+            $.each(data, function(key, value){
+              input = document.getElementById(key);
+              if (input){
+                input.value = value;
+                // console.log(input)
+                input.parentNode.setAttribute('class','is-filled');      
+              }
+            })
+            let btn = document.createElement("BUTTON");
+              let node = document.createTextNode("Update");
+              btn.appendChild(node);
+              btn.setAttribute("class", "btn btn-warning");
+              btn.setAttribute("id", "update_profile")
+              btn.setAttribute("type", "button")
+            save_btn = document.getElementById('save_profile');
+            if (save_btn) {
+              document.getElementById('save_profile').parentElement.append(btn)
+              document.getElementById('save_profile').remove();
+            }
+          }
+        }
+      });
+}
+
+function fill_stylists_table(){
+  $.ajax({
+        url: '/api/stylists/',
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(data) {
+          if ( data != null){         
+            let stylists_tb = document.createElement("tbody")
+            stylists_tb.setAttribute("id", "stylists_tbody")
+            $.each(data, function(index, value){
+              let tr = document.createElement("tr");
+              let fistName = document.createElement("td");
+              fistName.append(value.firstName)
+              tr.append(fistName)
+              let lastname = document.createElement("td");
+              lastname.append(value.lastName)
+              tr.append(lastname)
+              let btn1 = document.createElement("BUTTON");
+              let edit_node = document.createTextNode("Edit");
+              btn1.appendChild(edit_node);
+              // let icon1 = document.createElement("i");
+              // icon1.setAttribute('class', 'fa fa-edit');
+              // btn1.appendChild(icon1);
+              btn1.setAttribute("class", "stylist-update btn btn-sm btn-mg-r btn-warning");
+              btn1.setAttribute("value", value.url)
+              let btn = document.createElement("BUTTON");
+              let node = document.createTextNode("Delete");
+              btn.appendChild(node);
+              // let icon = document.createElement("i");
+              // icon.setAttribute('class', 'fa fa-close');
+              // btn.appendChild(icon);
+              btn.setAttribute("class", "stylist-delete btn btn-sm btn-danger");
+              btn.setAttribute("value", value.url)
+              let button = document.createElement("td");
+              button.append(btn1);
+              button.append(btn);
+              tr.append(button);
+              stylists_tb.append(tr)
+            })
+            $('#stylists_tbody').replaceWith(stylists_tb)
+          }
+        }
+      });
+}
+
+function fill_openning_times_table(){
+  $.ajax({
+        url: '/api/opening-times/',
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(data) {
+          if ( data != null){
+            let opening_times_tb = document.createElement("tbody")
+            opening_times_tb.setAttribute("id", "openning_times_tbody")
+            $.each(data, function(index, value){
+              // console.log(value)
+              let tr = document.createElement("tr");
+              let day = document.createElement("td");
+              // console.log(value.day)
+              day.append(weekday[value.day])
+              tr.append(day)
+              let openTime = document.createElement("td");
+              openTime.append(value.openTime)
+              tr.append(openTime)
+              let closeTime = document.createElement("td");
+              closeTime.append(value.closeTime)
+              tr.append(closeTime)
+              let btn = document.createElement("BUTTON");
+              let node = document.createTextNode("Edit");
+              btn.appendChild(node);
+              btn.setAttribute("class", "openning_time_edit btn btn-sm btn-warning");
+              btn.setAttribute("value", value.url)
+              let button = document.createElement("td");
+              button.append(btn)
+              tr.append(button)
+              opening_times_tb.append(tr)
+            })
+            $('#openning_times_tbody').replaceWith(opening_times_tb)
+          }
+        }
+      });
+}
+
+function fill_services_table(){
+  $.ajax({
+        url: '/api/service-blocks/',
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(data) {
+          if ( data != null){
+            let stylists_tb = document.createElement("tbody")
+            stylists_tb.setAttribute("id", "services_tbody")
+            $.each(data, function(index, value){
+              let tr = document.createElement("tr");
+              let service = document.createElement("td");
+              service.append(value.name)
+              tr.append(service)
+              let length = document.createElement("td");
+              length.append(value.length)
+              tr.append(length)
+              let ped_length = document.createElement("td");
+              if (value.pedicure_chair_length) {
+                ped_length.append(value.pedicure_chair_length)
+                tr.append(ped_length)
+              } else {
+                ped_length.append('0')
+                tr.append(ped_length)
+              }
+              let btn = document.createElement("BUTTON");
+              let node = document.createTextNode("Delete");
+              btn.appendChild(node);
+              btn.setAttribute("class", "service-delete btn btn-sm btn-danger");
+              btn.setAttribute("value", value.url)
+              let button = document.createElement("td");
+              button.append(btn)
+              tr.append(button)
+              stylists_tb.append(tr)
+            })
+            $('#services_tbody').replaceWith(stylists_tb)
+          }
+
+        }
+      });
+}
+
+function fill_extra_services_table(){
+  $.ajax({
+        url: '/api/extra-service-blocks/',
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(data) {
+          if ( data != null){
+            let stylists_tb = document.createElement("tbody")
+            stylists_tb.setAttribute("id", "extra_services_tbody")
+
+            $.each(data, function(index, value){
+              let tr = document.createElement("tr");
+              let e_service = document.createElement("td");
+              e_service.append(value.name)
+              tr.append(e_service)
+              let length = document.createElement("td");
+              length.append(value.length)
+              tr.append(length)
+              let ped_length = document.createElement("td");
+              if (value.frontEnd) {
+            
+                ped_length.append('Yes')
+                tr.append(ped_length)
+              } else {
+                ped_length.append('No')
+                tr.append(ped_length)
+              }
+              let btn = document.createElement("BUTTON");
+              let node = document.createTextNode("Delete");
+              btn.appendChild(node);
+              btn.setAttribute("class", "extra-service-delete btn btn-sm btn-danger");
+              btn.setAttribute("value", value.url)
+              let button = document.createElement("td");
+              button.append(btn)
+              tr.append(button)
+              stylists_tb.append(tr)
+            })
+            $('#extra_services_tbody').replaceWith(stylists_tb)
+          }
+
+        }
+      });
+}
+
+$(document).ready( function(){
+
+  fill_stylists_table();
+  fill_services_table();
+  fill_extra_services_table();
+  fill_openning_times_table();
+  fill_profile_form();
+
+
+});
+
+$(document).on('click', "#update_profile",function(){
+  let $inputs = $('#profile :input');
+    //var url      = window.location.href;
+    // not sure if you wanted this, but I thought I'd add it.
+    // get an associative array of just the values.
+    // console.log($inputs)
+    let values = {};
+    $inputs.each(function(index, input) {
+      // console.log(input)
+          values[this.name] = this.value
+   
+    });
+    // console.log(values)
+    let url = document.getElementById('salon_account').value
+    $.ajax({
+    url: url,
+    type: 'PUT',
+    data: values,
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+      success: function (arg) {
+        // document.getElementById("stylist").style.display = "none";
+
+        fill_profile_form();
+        alert('Salon Profile Updated')
+      }
+    });
+});
+
+$('#save_profile').on('click', function(){
+  let $inputs = $('#profile :input');
+    //var url      = window.location.href;
+    // not sure if you wanted this, but I thought I'd add it.
+    // get an associative array of just the values.
+    // console.log($inputs)
+    let values = {};
+    $inputs.each(function(index, input) {
+      // console.log(input)
+          values[this.name] = this.value
+   
+    });
+    // console.log(values)
+    $.ajax({
+    url: '/api/salons/',
+    type: 'POST',
+    data: values,
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+      success: function (arg) {
+        location.reload();
+        // document.getElementById("stylist").style.display = "none";
+        // $('#stylists').modal('hide');
+        // fill_stylists_table();
+        // alert('ok')
+      }
+    });
+});
+
+
+
+$('#add_stylist').on('click', function(){
+  let $inputs = $('#stylist_form :input');
+    //var url      = window.location.href;
+    // not sure if you wanted this, but I thought I'd add it.
+    // get an associative array of just the values.
+    let values = {};
+    $inputs.each(function() {
+
+          values[this.name] = this.value
+   
+    });
+
+    $.ajax({
+    url: '/api/stylists/',
+    type: 'POST',
+    data: values,
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+      success: function (arg) {
+        // document.getElementById("stylist").style.display = "none";
+        $('#stylists').modal('hide');
+        fill_stylists_table();
+        // alert('ok')
+      }
+    });
+});
+
+
+
+$('#add_service').on('click', function(){
+  let $inputs = $('#service_form :input');
+    //var url      = window.location.href;
+    // not sure if you wanted this, but I thought I'd add it.
+    // get an associative array of just the values.
+    let values = {};
+    $inputs.each(function() {
+
+          values[this.name] = this.value
+   
+    });
+
+    $.ajax({
+    url: '/api/service-blocks/',
+    type: 'POST',
+    data: values,
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+      success: function (arg) {
+        // document.getElementById("stylist").style.display = "none";
+        $('#services').modal('hide');
+        fill_services_table();
+        // alert('ok')
+      }
+    });
+
+
+});
+
+$('#add_extra_service').on('click', function(){
+  let $inputs = $('#extra_service_form :input');
+    //var url      = window.location.href;
+    // not sure if you wanted this, but I thought I'd add it.
+    // get an associative array of just the values.
+    let values = {};
+    $inputs.each(function() {
+      values[this.name] = this.value
+      if (this.name == 'frontEnd'){
+        if (this.checked != true){
+          values[this.name] = 0 
+        } else {
+          values[this.name] = 1
+      }  
+      }
+     
+
+          
+   
+    });
+
+    $.ajax({
+    url: '/api/extra-service-blocks/',
+    type: 'POST',
+    data: values,
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+      success: function (arg) {
+        // document.getElementById("stylist").style.display = "none";
+        $('#extra_services').modal('hide');
+        fill_extra_services_table();
+        // alert('ok')
+      }
+    });
+
+
+});
+
+
+
+
+$(document).on('click', ".stylist-delete",function(){
+  let value = this.value
+  // http://127.0.0.1:8000/api/stylists/5/
+  //alert(value)
+  let url_str = value
+
+  $.ajax({
+    url: url_str,
+    type: 'DELETE',
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+    success: function (arg) {
+      fill_stylists_table()
+    }
+  });
+
+});
+
+$(document).on('click', ".service-delete",function(){
+  let value = this.value
+  // http://127.0.0.1:8000/api/stylists/5/
+  //alert(value)
+  let url_str = value
+  $.ajax({
+    url: url_str,
+    type: 'DELETE',
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+    success: function (arg) {
+      fill_services_table()
+    }
+  });
+
+});
+
+$(document).on('click', ".extra-service-delete",function(){
+  let value = this.value
+  // http://127.0.0.1:8000/api/stylists/5/
+  //alert(value)
+  let url_str = value
+  $.ajax({
+    url: url_str,
+    type: 'DELETE',
+    beforeSend: function (xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+    success: function (arg) {
+      fill_extra_services_table()
+    }
+  });
+
+});
+
+
+</script>
+{% endblock js %}
+{% comment %} {% endblock scripts %} {% endcomment %}

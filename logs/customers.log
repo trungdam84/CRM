@@ -1,0 +1,575 @@
+2021-12-12 16:53:43,585:customers.views: shortappntcheck []
+2021-12-12 17:02:35,383:customers.views: shortappntcheck []
+2021-12-12 19:21:40,500:customers.views: shortappntcheck []
+2021-12-13 19:41:45,676:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 186, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 327, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-13 19:42:22,781:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 186, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 327, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-13 19:42:53,391:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 186, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 327, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-13 20:28:52,687:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,691:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,693:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,695:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,702:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,704:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,705:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,707:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,708:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,711:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,712:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,713:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,714:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,715:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,717:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,851:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,853:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,861:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,862:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,864:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,865:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,866:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,867:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,869:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,871:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,872:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,873:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,874:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,875:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,984:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,985:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,985:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,987:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,988:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,989:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,990:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,991:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,992:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,993:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,994:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,995:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:52,998:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,006:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,007:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,009:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,010:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,011:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,015:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,016:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,017:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,019:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,020:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,021:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,023:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,024:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,025:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,027:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,030:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,031:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,033:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,034:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,036:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,037:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,039:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 20:28:53,040:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 328, in create_availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-13 21:08:48,540:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 197, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 342, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-13 21:08:48,688:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 197, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 342, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-13 22:00:48,859:customers.views: shortappntcheck []
+2021-12-18 22:45:48,753:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 191, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 449, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 22:45:49,123:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 191, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 449, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 22:45:49,215:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 191, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 449, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 22:45:49,423:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 191, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 449, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 22:45:49,491:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 191, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 449, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 23:00:25,380:customers.signals:'NoneType' object has no attribute 'availables'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 173, in deleted
+    available_list = available.availables.split(',')
+AttributeError: 'NoneType' object has no attribute 'availables'
+2021-12-18 23:00:25,386:customers.signals:'NoneType' object has no attribute 'ped_availables'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 200, in deleted
+    ped_available_list = ped_chair_avail_day.ped_availables.split(',')
+AttributeError: 'NoneType' object has no attribute 'ped_availables'
+2021-12-18 23:00:25,392:customers.signals:'NoneType' object has no attribute 'availables'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 173, in deleted
+    available_list = available.availables.split(',')
+AttributeError: 'NoneType' object has no attribute 'availables'
+2021-12-18 23:00:25,399:customers.signals:'NoneType' object has no attribute 'availables'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 173, in deleted
+    available_list = available.availables.split(',')
+AttributeError: 'NoneType' object has no attribute 'availables'
+2021-12-18 23:03:51,557:customers.models:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 450, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 23:07:07,064:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 191, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 450, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 23:10:38,990:customers.signals:time data '' does not match format '%Y-%m-%d %H:%M:%S'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 191, in deleted
+    available.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 450, in get_max_length
+    check_slot = datetime.strptime(availables[0], '%Y-%m-%d %H:%M:%S')
+  File "C:\Program Files\Python37\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files\Python37\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '' does not match format '%Y-%m-%d %H:%M:%S'
+2021-12-18 23:15:05,287:customers.signals:local variable 'availables' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 173, in deleted
+    available = AvailableTimes.objects.filter(stylist=instance.stylist, date=instance.dateTime.date()).first().create_availables_times()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 430, in create_availables_times
+    self.get_max_length()
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 445, in get_max_length
+    if len(availables) >= 1:
+UnboundLocalError: local variable 'availables' referenced before assignment
+2021-12-18 23:17:20,121:customers.signals:'NoneType' object has no attribute 'get_max_length'
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\signals.py", line 174, in deleted
+    available.get_max_length()
+AttributeError: 'NoneType' object has no attribute 'get_max_length'
+2021-12-25 18:10:53,504:customers.views: shortappntcheck []
+2021-12-25 18:24:45,592:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 440, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 01:49:47,526:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 450, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 01:55:00,963:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 450, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 01:55:22,328:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 450, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 01:56:26,156:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 450, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 01:57:00,887:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 01:57:32,168:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 02:02:14,109:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 02:04:26,410:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 02:05:15,463:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 02:11:26,949:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 02:16:32,828:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 02:31:01,559:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 451, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list
+2021-12-26 22:03:32,113:customers.models:list.remove(x): x not in list
+Traceback (most recent call last):
+  File "C:\Users\Home\Documents\Visual Studio Code\Django\Salon-CRM-production\main\customers\models.py", line 424, in availables_times
+    availables.remove(slot)
+ValueError: list.remove(x): x not in list

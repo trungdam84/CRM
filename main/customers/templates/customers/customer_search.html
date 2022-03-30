@@ -1,0 +1,35 @@
+<table class="table-striped" id="myTable"  style="margin:0px; height:150px; width:100%; overflow:auto;">             
+                <thead class="thead-dark">
+                  <tr style="">                  
+                    <th width="10%">ID</th>
+                    <th width="15%">FirstName</th>
+                    <th width="15%">LastName</th>
+                    <th width="15%">Mobile</th>
+                    <th width="20%">Not Turned Up</th>
+                    <th width="20%">Notice</th>
+                    <th width="5%">Box</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  {% for customer in customers %}
+                  <tr> 
+                    <td id="cus_id">{{customer.pk}}</td>
+                    <td id="firstName"><a href="{% url 'update-customer' customer.pk %}">{{customer.firstName}}</a></td>
+                    <td id="lastName">{{customer.lastName}}</td>
+                    <td id="mobile">{{customer.mobile}}</td>
+                    <td id="ntup">
+                    {% for item in customer.not_turned_up%}
+                    {{item.dateTime}}
+                    {% endfor %}
+                    </td>
+                    <td id="notice">{{customer.notice}}</td>
+                    <td id="box">{{customer.box}}</td>
+                  </tr>
+                  {% endfor %}
+                  
+
+                  
+                </tbody>
+              </table>

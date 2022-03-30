@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    {% if title %}
+        <title>Creatip - {{ title }}</title>
+    {% else %}
+        <title> Dev</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+          <div class="container-fluid">
+
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+              <a class="nav-item nav-link" href="{% url 'appointments' %}">Appointments</a>
+              <a class="nav-item nav-link" href="{% url 'customers' %}">Customers</a>                
+              <a class="nav-item nav-link" href="{% url 'clean-boxes' %}">Check boxes</a> 
+                           
+                <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="#">Logout</a>
+                </div>
+            </nav>
+            <br>
+          </div>
+                       
+
+    </header>
+
+    <main role="main" class="container-fluid">
+      <div class="row">
+        <div class="col-sm-9">
+          <content class="container-fluid">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-warning">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}
+          {% endblock content %}
+          </content>
+        </div>
+      </div>
+  
+
+
+        <div class="col-sm-3">
+          {% block side %}
+          {% endblock side %}
+        </div>
+      </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {% block js %}
+    {% endblock js %}
+
+</body>
+</html>

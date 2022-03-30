@@ -1,0 +1,43 @@
+{% extends "customers/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <div class="form-group">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div><label for="id_firstName">FirstName:</label> <input type="text" name="firstName" maxlength="50" required="" id="id_firstName" autofocus></div>
+                        <div><label for="id_lastName">LastName:</label> <input type="text" name="lastName" maxlength="50" required="" id="id_lastName"></div>
+                        <div><label for="id_tel">Mobile:</label> <input type="text" name="mobile" maxlength="15" id="id_mobile"></div>
+                        <div><label for="id_tel">Tel:</label> <input type="text" name="tel" maxlength="15" id="id_tel"></div>
+                        <div><label for="id_address_1">Address 1:</label> <input type="text" name="address_1" maxlength="50" id="id_address_1"></div>
+                        <p><label for="id_address_2">Address 2:</label> <input type="text" name="address_2" maxlength="50" id="id_address_2"></p>
+                        <p><label for="id_town">Town:</label> <input type="text" name="town" maxlength="50" id="id_town"></p>
+                        <p><label for="id_postCode">PostCode:</label> <input type="text" name="postCode" maxlength="10" id="id_postCode"></p>
+                        <p><label for="id_postCode">Box:</label>
+                            <select name="locker" id="id_locker">
+
+                                {% for locker in lockers %}
+                                <option value={{locker}}>{{locker}}</option>
+                                {% endfor %}
+                              
+    
+                            </select>
+                        </p>
+                        <button class="btn btn-sucess btn-outline-info" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

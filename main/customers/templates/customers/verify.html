@@ -1,0 +1,122 @@
+{% extends 'customers/index_base.html' %}
+{% load static %}
+{% block content %}
+<div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-white font-weight-bold">Creatip</h1>
+                        <hr class="divider my-4" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 font-weight-light mb-5">Your best local Nails Artist in Kettering!</p>
+
+    
+                                    <div class="collapse show" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="well-block">
+                                                        <div class="well-title">
+                                                            <h2>Verify your mobile number</h2>
+                                                        </div>
+                                                        <p class="font-weight-light" style="margin-top:25px; font-size: 15px">
+
+                                                        Please enter 4 digits we have sent to your mobile <strong>{{appointment.appoinmentMobile}}</strong> and click Verify to verify your phone number. 
+
+                                                        </p>
+                                                        {% if messages %}
+                                                            {% for message in messages %}
+                                                            <div class="alert alert-warning">
+                                                                {{ message }}
+                                                            </div>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                        <form id="appointment-form" method="POST">
+                                                        {% csrf_token %}
+                                                            <!-- Form start -->
+                                                            <div class="row">
+                                                                <input type="hidden" name="appointmentID" id="appointmentID" value="{{appointment.appoinmentID}}">
+
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="otp">One Time Passcode</label>
+                                                                        <input id="otp" name="otp" type="text" placeholder="Please enter 4 digits we have sent to your mobile!" class="form-control input-md">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                        <input
+                                                                            class=""
+                                                                            type="checkbox"
+                                                                            value=""
+                                                                            id="remember-device"
+                                                                            name="remember-device"
+                                                                            for="remember-device"
+                                                                            checked
+                                                                        />
+                                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                                            Remember this device
+                                                                        </label>
+                                                                </div>
+                                                                <!-- Button -->
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <button id="verify" name="verify" class="btn btn-light" style="margin-top:20px;">Verify</button>
+                                                                    </div>
+                                                                </div>
+
+                                                               
+                                                            </div>
+                                                        </form>
+                                                                <div class="col-md-12" style="font-size:10px">
+                                                                 <p class="font-weight-light" style="margin-top:25px; font-size: 15px">
+
+                                                                   <span id="resend_message"> If you have not received please click  </span>
+                                                                    
+                                                                        <button id="resend" name="resend" class="btn btn-light">Resend</button>
+                                                               
+                                                                </p>
+                                                               
+                                                                </div>
+                                                        <!-- form end -->
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script language="JavaScript" type="text/javascript">
+            $(document).ready(function(){
+            $(document).on("click", "#resend", function(){
+
+                    // get all the inputs into an array.
+                    var appointmentID = $('#appointmentID').val()
+
+                    var values = {};
+                    values['id'] = appointmentID
+
+
+                $.get('/otp-resend/', values)
+                .done(function(data){
+                    if (data.error == 1) {
+                        $("#resend_message").replaceWith(data.message);
+                    } 
+                    if (data.error == 0) {
+                  
+                        $("#resend_message").replaceWith(data.message)
+                        var myobj = document.getElementById("resend");
+                        myobj.remove();
+         
+                    }
+                });
+                });
+            });
+            </script>
+{% endblock content %}

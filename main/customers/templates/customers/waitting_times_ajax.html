@@ -1,0 +1,9 @@
+<select class="form-control" name="time" id="time">
+    {% for time in waitting_times %}
+        {% if time == prefer_time %}
+            <option selected value="{{time|date:'Y-m-d H:i:s'}}">{{time|date:'H:i'}}</option>
+        {% else %}
+            <option value="{{time|date:'Y-m-d H:i:s'}}">{{time|date:'H:i'}}</option>
+        {% endif %}
+    {% endfor %}
+</select>

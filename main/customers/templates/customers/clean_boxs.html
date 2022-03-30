@@ -1,0 +1,11 @@
+{% extends 'customers/base.html' %}
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div><label for="id_boxes">Boxes list:</label> <input type="text" name="boxes" required="" id="id_boxes" autofocus></div>
+
+    <button class="btn btn-sucess btn-outline-info" type="submit">Save</button>
+</form>
+
+{% endblock %}

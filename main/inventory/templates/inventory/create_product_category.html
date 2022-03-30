@@ -1,0 +1,87 @@
+{% extends "customers/base.html" %} {% load static %} {% block content%}
+{% if not popup %}
+<div class="row justify-content-center mt-5 p-2">
+{% else %}
+<div class="row p-2">
+{% endif %}
+  <div class="col-sm-12 col-md-9 col-lg-6 container">
+    <form method="POST">
+      {%csrf_token %}
+      <div class="card mb-2">
+        <div class="card-header">
+          <h5 class="card-title">Create Product Category</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="categoryName" class="form-label"
+              >Category Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="categoryName"
+              placeholder=""
+              name="categoryName"
+              required
+            />
+          </div>
+         
+
+          <div class="row" style="margin: 0px">
+            <button
+              type="submit"
+              value="Save"
+              class="btn btn-block btn-primary mt-1"
+              name="_save"
+            >
+              Save
+            </button>
+
+            {% comment %}
+            <button
+              type="submit"
+              value="Save and add another"
+              class="btn btn-block btn-primary mt-1 disabled"
+              name="_addanother"
+            >
+              Save and add another
+            </button>
+            <button
+              type="submit"
+              value="Save and continue editing"
+              class="btn btn-block btn-primary mt-1 disabled"
+              name="_continue"
+            >
+              Save and continue editing
+            </button>
+            {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-3 col-lg-3 container">
+    <div class="card">
+      <div class="card-header">
+        <h6 class="card-title">Product Categories</h6>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Categories</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for cat in categories %}
+          <tr>
+            <td>{{cat.categoryName}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

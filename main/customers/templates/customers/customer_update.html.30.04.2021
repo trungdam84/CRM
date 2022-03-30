@@ -1,0 +1,117 @@
+{% extends "customers/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-6">
+            <h3>Update customer info</h3>
+            <h4>Customer: {{customer}}</h4>
+            {% if not locker %}
+            <a class="btn btn-primary ml-auto" style="margin-left: 20px;" href="{% url 'delete-customer' customer.pk %}">Duplicate customer delete</a>
+            {% endif %}
+            <div class="form-group">
+                <div class="form-group">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                          <div>
+                              <tr>
+                                  <th width="150">FirstName</th>
+                                  <th width="150">LastName</th>
+                                  <th width="150">Mobile</th>
+  
+                              </tr>
+                          </div>
+                      </table>
+                          <div>
+                              <table id="myTable" style="width:500px; height:100px; overflow:auto;">
+  
+                              {% for cust in customers %}
+                               <tr>
+                                  <td width="150">{{cust.firstName}}</td>
+                                  <td width="150">{{cust.lastName}}</td>
+                                  <td width="150">{{cust.mobile}}</td>
+                               </tr>
+                               {% endfor %}
+                             </table>  
+                           </div>
+                        <br>
+                        <h3>Customer</h3>
+                                <div><label width="150" for="id_firstName">FirstName:</label> <input type="text" name="firstName" maxlength="50" id="id_firstName" value={{customer.firstName}} autofocus></div>             
+                                <div><label width="150" for="id_lastName">LastName:</label> <input type="text" name="lastName" maxlength="50" id="id_lastName" value={{customer.lastName}}></div>
+                                <div><label width="150" for="id_mobile">Mobile:</label> <input type="text" name="mobile" maxlength="15" id="id_mobile" value={{customer.mobile}}></div>
+                                {% if not locker %}
+                                <p><label for="id_postCode">Box:</label>
+                                    <select name="locker" id="id_locker">
+        
+                                        {% for locker in lockers %}
+                                        <option value={{locker}}>{{locker}}</option>
+                                        {% endfor %}
+                                      
+            
+                                    </select>
+                                </p>
+                                {% endif %}
+                                <div>
+                                  <button class="btn btn-sucess btn-outline-info" type="submit">Save</button>
+
+                                </div>
+
+                    
+
+                    </form>
+                     
+
+
+              <style>
+                  /* scrolltable rules */
+                table  { margin-top:  20px; display: inline-block; overflow: auto; }
+                th div { margin-top: -20px; position: absolute; }
+
+                /* design */
+                table { border-collapse: collapse; }
+                tr:nth-child(even) { background: #EEE; }
+              </style>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#id_firstName").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  $("tr").click(function(){
+    var values = $(this).text();
+    values = values.replace(/(\r\n|\n|\r)/gm," ");
+    values = values.replace(/\s+/g," ");
+    values = values.split(' ')
+    document.getElementById('id_firstName').value = values[1];
+    document.getElementById('id_lastName').value = values[2];
+    document.getElementById('id_mobile').value = values[3];
+  });
+});
+
+
+
+
+
+</script>
+
+
+{% endblock content %}

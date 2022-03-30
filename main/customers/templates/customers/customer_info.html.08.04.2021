@@ -1,0 +1,15 @@
+<div>
+{% if customer %}
+<h5>Customer:</h5>
+<div>{{customer.firstName}} {{customer.lastName}}</div>
+<div>Mobile: {{customer.mobile}}</div>
+<div>Notice: <p>{{customer.notice}}</p></div>
+
+{% elif callerID %}
+<h5>Calling number:</h5>
+<div>{{callerID}}</div>
+
+{% endif %}
+
+
+</div>
