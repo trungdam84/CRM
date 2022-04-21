@@ -103,7 +103,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'salon-crm-production',
+        'NAME': 'salon-crm',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
         'PASSWORD': '123456',

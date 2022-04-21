@@ -116,7 +116,7 @@ def index(request):
     
     print(request.COOKIES)
 
-    reqst = reques
+    reqst = request
     salonAcc = get_object_or_404(SalonAccount, website=reqst.META['HTTP_HOST'])
     if 'cus_session' in reqst.COOKIES:
         

@@ -1,0 +1,63 @@
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-block">
+                        <div class="well-title">
+                            <h2>Login / Register</h2>
+                    
+                        </div>
+                        <form class="" id="appointment-form" method="POST" >
+                        {% csrf_token %}
+                            <!-- Form start -->
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="firstname">Firstname</label>
+                                        <input id="firstname" name="firstname" type="text" placeholder="Firstname" class="form-control input-md" required>
+                                        <!-- <div name="firstname" class="invalid-feedback"><small>Firstname required.</small></div> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="lastname">Lastname</label>
+                                        <input id="lastname" name="lastname" type="text" placeholder="Lastname" class="form-control input-md" required>
+                                        <!-- <div name="lastname" class="invalid-feedback"><small>Lastname equired.</small></div> -->
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label" for="mobile">Mobile</label>
+                                        <input id="mobile" name="mobile" type="tel" placeholder="Mobile" class="form-control input-md" required>
+                                        <!-- <div name="mobile" class="invalid-feedback"><small>Mobile number required.</small></div> -->
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input  needs-validation" id="t_cagree" required="">
+                                        <label class="form-check-label" for="t_cagree"><small>I agree to the {{salonAcc.salonName}}</small> <a href="#" title="View" data-target="#t_cModal" data-toggle="modal"><small>Terms and Conditions</small> </a><small> and </small><a href="#" title="View" data-target="#p_pModal" data-toggle="modal"><small> Privacy Policy</small></a></label>
+                                        <div id="t_cagree_tt" class="invalid-feedback"><small>You must agree to our Terms and Conditions and Privacy Polisy before continue.</small></div>
+                                    </div>
+
+                                </div>
+                        <!-- Button -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button style="margin-top: 20px;" id="appontbutton" name="appontbutton" class="btn btn-light">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- form end -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>

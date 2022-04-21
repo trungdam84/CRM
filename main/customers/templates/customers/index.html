@@ -333,22 +333,28 @@
                                                 <div class="col-md-12">
                                                     <div class="well-block">
                                                         <div class="well-title">
-                                                            <h2>Login / Register</h2>
+                                                            <h2 id="form-header">Login</h2>
                                                     
                                                         </div>
                                                         <form class="" id="appointment-form" method="POST" >
                                                         {% csrf_token %}
                                                             <!-- Form start -->
                                                             <div class="row">
-                                                                
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
+                                                                        <label class="control-label" for="mobile">Mobile</label>
+                                                                        <input id="mobile" name="mobile" type="tel" placeholder="Please enter your mobile number!" class="form-control input-md" required>
+                                                                        <!-- <div name="mobile" class="invalid-feedback"><small>Mobile number required.</small></div> -->
+                                                                    </div>
+                                                                </div>                                                               
+                                                                <div id="input-name" class="col-md-12 d-none" >
+                                                                    <div  class="form-group">
                                                                         <label class="control-label" for="firstname">Firstname</label>
                                                                         <input id="firstname" name="firstname" type="text" placeholder="Firstname" class="form-control input-md" required>
                                                                         <!-- <div name="firstname" class="invalid-feedback"><small>Firstname required.</small></div> -->
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-12">
+                                                                <div id="input-name" class="col-md-12 d-none">
                                                                     <div class="form-group">
                                                                         <label class="control-label" for="lastname">Lastname</label>
                                                                         <input id="lastname" name="lastname" type="text" placeholder="Lastname" class="form-control input-md" required>
@@ -356,13 +362,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label" for="mobile">Mobile</label>
-                                                                        <input id="mobile" name="mobile" type="tel" placeholder="Mobile" class="form-control input-md" required>
-                                                                        <!-- <div name="mobile" class="invalid-feedback"><small>Mobile number required.</small></div> -->
-                                                                    </div>
-                                                                </div>
+
                                                                 <!-- Text input-->
 
                                                                 <!-- Select Basic -->
@@ -387,7 +387,7 @@
                                                                 <!-- Button -->
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <button style="margin-top: 20px;" id="appontbutton" name="appontbutton" class="btn btn-light">Login</button>
+                                                                        <button id="form-submit" style="margin-top: 20px;" id="appontbutton" name="appontbutton" class="btn btn-light">Login</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -655,6 +655,29 @@
                             });
                 })
                 
+        </script>
+        <script>
+            $(document).ready(function(){
+                $("#mobile").on("keyup", function() {
+                    let phoneno = /(07([0-9]{9}))$/;
+                    let value = $(this).val().toLowerCase();
+                    
+                    
+                    if(value.match(phoneno))
+                            {
+                        
+                            document.getElementById("mobile").classList.remove("is-invalid")
+                            document.getElementById("mobile").classList.add("is-valid")
+                            }
+                        else
+                            {
+                            
+                            document.getElementById("mobile").classList.add("is-invalid")
+                            
+                            }
+                
+                });
+            });
         </script>
 	<script src="{% static '/cookielaw/js/cookielaw.js'%}"></script>
     </body>
